@@ -1,0 +1,50 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "prettier/react"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": ["react","prettier"],
+    "rules": {
+      "prettier/prettier": "error",
+      "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "comma-dangle": ["error",  "only-multiline"],
+        "no-cond-assign": ["error", "always"],
+        "no-console": "off"
+    },
+    "settings": {
+        "react": {
+            "createClass": "createReactClass",
+            "pragma": "React",
+            "fragment": "Fragment",
+            "version": "detect",
+            "flowVersion": "0.53"
+        },
+        "propWrapperFunctions": [
+            "forbidExtraProps",
+            { "property": "freeze", "object": "Object" },
+            { "property": "myFavoriteWrapper" }
+        ],
+        "linkComponents": [
+            "Hyperlink",
+            { "name": "Link", "linkAttribute": "to" }
+        ]
+    }
+}
