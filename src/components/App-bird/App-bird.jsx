@@ -1,12 +1,14 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { setStartPosForBird, changeGameStatus } from "../../store/reducers";
+import {
+    setStartPosForBird,
+    changeGameStatus,
+    fallBird,
+    flyBird,
+} from "../../store/reducers";
 import "./App-bird.scss";
-
 const AppBird = () => {
-    let history = useHistory();
     let dispatch = useDispatch();
     let data = useSelector((state) => {
         let {
@@ -17,8 +19,18 @@ const AppBird = () => {
     }, shallowEqual);
     let { birdPosX, birdPosY, arrayOfPipes, gameFieldHeight } = data;
     useEffect(() => {
+        setInterval(() => {
+            dispatch(fallBird());
+        }, 50);
+        const handleKeyPress = (e) => {
+            if (e.keyCode === 32) {
+                dispatch(flyBird());
+            }
+        };
+        document.addEventListener("keypress", handleKeyPress);
+    }, []);
+    useEffect(() => {
         if (birdPosY < 0 || birdPosY + 30 > gameFieldHeight) {
-            history.push("/game");
             dispatch(setStartPosForBird());
             dispatch(changeGameStatus("game over"));
         }
@@ -29,12 +41,11 @@ const AppBird = () => {
                 (birdPosY + 30 <= elem.pipeHeightTop ||
                     birdPosY + 30 >= elem.pipeHeightBottom)
             ) {
-                history.push("/game");
                 dispatch(changeGameStatus("game over"));
                 dispatch(setStartPosForBird());
             }
         });
-    }, [arrayOfPipes]);
+    }, [birdPosX, birdPosY]);
 
     return (
         <div

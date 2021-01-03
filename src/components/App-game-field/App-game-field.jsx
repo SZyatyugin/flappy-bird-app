@@ -6,8 +6,6 @@ import {
     movePipes,
     deleteItemFromArrayOfPipes,
     getUserScore,
-    fallBird,
-    flyBird,
     changeGameStatus,
 } from "../../store/reducers";
 import "./App-game-field.scss";
@@ -29,7 +27,7 @@ const AppGameField = () => {
         if (status === "game over") {
             console.log("reload");
             dispatch(deleteItemFromArrayOfPipes());
-            dispatch(changeGameStatus());
+            dispatch(changeGameStatus("start"));
         }
     }, [status]);
 
@@ -42,15 +40,6 @@ const AppGameField = () => {
         setInterval(() => {
             dispatch(addNewPipe());
         }, 8000);
-        setInterval(() => {
-            dispatch(fallBird());
-        }, 50);
-        const handleKeyPress = (e) => {
-            if (e.keyCode === 32) {
-                dispatch(flyBird());
-            }
-        };
-        document.addEventListener("keypress", handleKeyPress);
     }, []);
 
     return (
