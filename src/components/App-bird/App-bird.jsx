@@ -49,7 +49,7 @@ const AppBird = () => {
                 if (
                     birdPosX + 30 >= elem.pipePosX &&
                     birdPosX + 30 <= elem.pipePosX + elem.pipeWidth &&
-                    (birdPosY + 30 <= elem.pipeHeightTop ||
+                    (birdPosY <= elem.pipeHeightTop ||
                         birdPosY + 30 >= elem.pipeHeightTop + pipeGap)
                 ) {
                     dispatch(deleteItemFromArrayOfPipes());
