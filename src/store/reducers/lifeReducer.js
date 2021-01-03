@@ -5,6 +5,14 @@ const lifeReducer = createSlice({
     initialState: {
         lifes: 3,
     },
-    reducers: {},
+    reducers: {
+        minusLife: (state) => {
+            return { ...state, lifes: state.lifes - 1 };
+        },
+        getLifes: (state) => {
+            state.lifes;
+        },
+    },
 });
+export const { minusLife, getLifes } = lifeReducer.actions;
 export default lifeReducer.reducer;

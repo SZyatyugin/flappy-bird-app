@@ -26,7 +26,7 @@ const pipesReducer = createSlice({
             });
         },
         deleteItemFromArrayOfPipes: (state) => {
-            state.arrayOfPipes.shift();
+            state.arrayOfPipes = [];
         },
     },
 });

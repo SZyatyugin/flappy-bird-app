@@ -3,19 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 const birdReducer = createSlice({
     name: "birdReducer",
     initialState: {
-        birdPosX: 50,
-        birdPosY: 200,
+        birdPosX: 20,
+        birdPosY: 100,
     },
     reducers: {
         fallBird: (state) => {
-            return { ...state, birdPosY: state.birdPosY + 4 };
+            state.birdPosY += 4;
         },
         flyBird: (state) => {
-            return { ...state, birdPosY: state.birdPosY - 30 };
+            state.birdPosY -= 30;
+        },
+        setStartPosForBird: (state) => {
+            (state.birdPosX = 20), (state.birdPosY = 100);
         },
     },
 });
-
-export const { fallBird, flyBird } = birdReducer.actions;
-
+export const { fallBird, flyBird, setStartPosForBird } = birdReducer.actions;
 export default birdReducer.reducer;

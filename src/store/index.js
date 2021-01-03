@@ -7,11 +7,6 @@ import {
 } from "./reducers";
 
 const store = configureStore({
-    reducer: {
-        birdReducer,
-        pipesReducer,
-        gameReducer,
-        lifeReducer,
-    },
+    reducer: { birdReducer, pipesReducer, gameReducer, lifeReducer },
 });
 export default store;
