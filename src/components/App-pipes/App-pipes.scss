@@ -1,0 +1,22 @@
+.pipes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.pipes-top {
+    background-image: url("../../assets/images/pipe-top.png");
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 0;
+    background-position: bottom;
+}
+.pipes-bottom {
+    background-image: url("../../assets/images/pipe-bottom.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+}

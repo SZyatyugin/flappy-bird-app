@@ -1,0 +1,15 @@
+.app-game-field {
+    width: 288px;
+    height: 512px;
+    background-image: url("../../assets/images/bg.png");
+    position: relative;
+    overflow: hidden;
+}
+.app-bottom-image {
+    background-image: url("../../assets/images/fg.png");
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 118px;
+}
