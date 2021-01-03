@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import {
     flyBird,
-    deleteItemFromArrayOfPipes,
     changeGameStatus,
+    deleteItemFromArrayOfPipes,
 } from "../../store/reducers";
 import "./App-bird.scss";
 const AppBird = () => {
