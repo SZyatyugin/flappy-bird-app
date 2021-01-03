@@ -1,4 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    height: 100vh;
+    width: 100vw;
+}
+
 .App {
     width: 320px;
     margin: 50px auto;
+    font-family: "Lato", sans-serif;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+        list-style-type: none;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.container {
+    width: 288px;
+    height: 512px;
+    background-image: url("../../assets/images/bg.png");
+    margin: 0 auto;
+    position: relative;
 }

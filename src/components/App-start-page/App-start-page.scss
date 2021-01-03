@@ -1,0 +1,40 @@
+.app-start-page {
+    height: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        color: white;
+    }
+}
+
+.start-page__list-wrapper {
+    flex: 100%;
+    color: white;
+}
+
+.start-page__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.start-page__list-item {
+    margin: 0 auto;
+    margin-top: 30px;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    a {
+        padding: 10px;
+    }
+    a:hover {
+        border-radius: 5px;
+        border: 1px solid grey;
+        background-color: aqua;
+    }
+}

@@ -1,0 +1,29 @@
+.app-create-user {
+    height: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        color: white;
+    }
+}
+
+.app-username {
+    padding: 5px;
+    line-height: 25px;
+    border-radius: 5px;
+}
+.app-start-game{
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    background-color: lightgray;
+    border:none;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+.app-start-game:hover{
+    background-color: rgb(5, 244, 92);
+}
