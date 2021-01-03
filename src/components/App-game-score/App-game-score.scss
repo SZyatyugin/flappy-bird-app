@@ -1,0 +1,41 @@
+.app-game-score {
+    height: 100%;
+    padding-top: 30px;
+}
+
+.app-game-score__title {
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+}
+
+.app-game-score-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    min-height: 300px;
+
+    li {
+        display: flex;
+        justify-content: space-around;
+        width: 200px;
+    }
+}
+
+.app-game-score-btn__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.app-game-score-btn {
+    padding: 10px;
+    font-size: 20px;
+    background-color: lightgray;
+    border-radius: 5px;
+    transition: all 1s ease;
+}
+
+.app-game-score-btn:hover {
+    
+    background-color: rgb(5, 244, 92);
+}

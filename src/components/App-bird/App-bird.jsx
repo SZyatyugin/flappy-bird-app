@@ -2,10 +2,9 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import {
-    setStartPosForBird,
-    changeGameStatus,
-    fallBird,
     flyBird,
+    deleteItemFromArrayOfPipes,
+    changeGameStatus,
 } from "../../store/reducers";
 import "./App-bird.scss";
 const AppBird = () => {
@@ -13,15 +12,27 @@ const AppBird = () => {
     let data = useSelector((state) => {
         let {
             birdReducer: { birdPosX, birdPosY },
-            pipesReducer: { arrayOfPipes, gameFieldHeight },
+            pipesReducer: { arrayOfPipes, gameFieldHeight, pipeGap },
+            lifesReducer: { lifes },
         } = state;
-        return { birdPosX, birdPosY, arrayOfPipes, gameFieldHeight };
+        return {
+            birdPosX,
+            birdPosY,
+            arrayOfPipes,
+            gameFieldHeight,
+            pipeGap,
+            lifes,
+        };
     }, shallowEqual);
-    let { birdPosX, birdPosY, arrayOfPipes, gameFieldHeight } = data;
+    let {
+        birdPosX,
+        birdPosY,
+        arrayOfPipes,
+        gameFieldHeight,
+        pipeGap,
+        lifes,
+    } = data;
     useEffect(() => {
-        setInterval(() => {
-            dispatch(fallBird());
-        }, 50);
         const handleKeyPress = (e) => {
             if (e.keyCode === 32) {
                 dispatch(flyBird());
@@ -31,21 +42,24 @@ const AppBird = () => {
     }, []);
     useEffect(() => {
         if (birdPosY < 0 || birdPosY + 30 > gameFieldHeight) {
-            dispatch(setStartPosForBird());
+            dispatch(changeGameStatus("next try"));
+        }
+        if (lifes > 0) {
+            arrayOfPipes.map((elem) => {
+                if (
+                    birdPosX + 30 >= elem.pipePosX &&
+                    birdPosX + 30 <= elem.pipePosX + elem.pipeWidth &&
+                    (birdPosY + 30 <= elem.pipeHeightTop ||
+                        birdPosY + 30 >= elem.pipeHeightTop + pipeGap)
+                ) {
+                    dispatch(deleteItemFromArrayOfPipes());
+                    dispatch(changeGameStatus("next try"));
+                }
+            });
+        } else {
             dispatch(changeGameStatus("game over"));
         }
-        arrayOfPipes.map((elem) => {
-            if (
-                birdPosX + 30 >= elem.pipePosX &&
-                birdPosX + 30 <= elem.pipePosX + elem.pipeWidth &&
-                (birdPosY + 30 <= elem.pipeHeightTop ||
-                    birdPosY + 30 >= elem.pipeHeightBottom)
-            ) {
-                dispatch(changeGameStatus("game over"));
-                dispatch(setStartPosForBird());
-            }
-        });
-    }, [birdPosX, birdPosY]);
+    }, [birdPosY, lifes]);
 
     return (
         <div

@@ -31,10 +31,10 @@
     justify-content: center;
     a {
         padding: 10px;
+        transition: all 1s ease;
     }
     a:hover {
         border-radius: 5px;
-        border: 1px solid grey;
-        background-color: aqua;
+        background-color: rgb(5, 244, 92);
     }
 }

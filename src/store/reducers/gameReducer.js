@@ -6,7 +6,7 @@ const gameReducer = createSlice({
         status: "stop",
         userName: null,
         userScore: 0,
-        userTopScore: [],
+        userListTopScore: [],
     },
     reducers: {
         changeGameStatus: (state, action) => {
@@ -18,11 +18,22 @@ const gameReducer = createSlice({
         getUserScore: (state) => {
             state.userScore += 1;
         },
+        setUserScoreToDefault: (state) => {
+            state.userScore = 0;
+        },
+        setUserListTopScore: (state) => {
+            state.userListTopScore.push({
+                userName: state.userName,
+                score: state.userScore,
+            });
+        },
     },
 });
 export const {
     changeGameStatus,
     getUserName,
     getUserScore,
+    setUserListTopScore,
+    setUserScoreToDefault,
 } = gameReducer.actions;
 export default gameReducer.reducer;
