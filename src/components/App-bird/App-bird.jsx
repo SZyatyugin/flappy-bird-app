@@ -12,7 +12,12 @@ const AppBird = () => {
     let data = useSelector((state) => {
         let {
             birdReducer: { birdPosX, birdPosY },
-            pipesReducer: { arrayOfPipes, gameFieldHeight, pipeGap },
+            pipesReducer: {
+                arrayOfPipes,
+                gameFieldHeight,
+                pipeGap,
+                bottomBgHeight,
+            },
             lifesReducer: { lifes },
         } = state;
         return {
@@ -22,6 +27,7 @@ const AppBird = () => {
             gameFieldHeight,
             pipeGap,
             lifes,
+            bottomBgHeight,
         };
     }, shallowEqual);
     let {
@@ -31,6 +37,7 @@ const AppBird = () => {
         gameFieldHeight,
         pipeGap,
         lifes,
+        bottomBgHeight,
     } = data;
     useEffect(() => {
         const handleKeyPress = (e) => {
@@ -41,7 +48,7 @@ const AppBird = () => {
         document.addEventListener("keypress", handleKeyPress);
     }, []);
     useEffect(() => {
-        if (birdPosY < 0 || birdPosY + 30 > gameFieldHeight) {
+        if (birdPosY < 0 || birdPosY + 30 > gameFieldHeight - bottomBgHeight) {
             dispatch(changeGameStatus("next try"));
         }
         if (lifes > 0) {
@@ -52,6 +59,9 @@ const AppBird = () => {
                     (birdPosY <= elem.pipeHeightTop ||
                         birdPosY + 30 >= elem.pipeHeightTop + pipeGap)
                 ) {
+                    console.log(birdPosY + 30);
+                    console.log(elem.pipeHeightTop + pipeGap);
+                    console.log(elem.pipeHeightBottom);
                     dispatch(deleteItemFromArrayOfPipes());
                     dispatch(changeGameStatus("next try"));
                 }

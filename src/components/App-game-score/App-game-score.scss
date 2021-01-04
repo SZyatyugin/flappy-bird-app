@@ -10,15 +10,14 @@
 }
 
 .app-game-score-list {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
     min-height: 300px;
 
     li {
         display: flex;
         justify-content: space-around;
         width: 200px;
+        margin: 0 auto;
+        margin-top:10px;
     }
 }
 

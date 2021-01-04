@@ -4,18 +4,26 @@ const pipesReducer = createSlice({
     name: "pipesReducer",
     initialState: {
         arrayOfPipes: [],
-        gameFieldHeight: 394,
+        gameFieldHeight: 512,
+        bottomBgHeight: 118,
         gameFieldWidth: 288,
         pipeWidth: 50,
         pipeGap: 100,
     },
     reducers: {
         addNewPipe: (state) => {
-            let height = Math.floor(Math.random() * 394) - 100;
+            let height =
+                Math.floor(
+                    Math.random() *
+                        (state.gameFieldHeight - state.bottomBgHeight)
+                ) - state.pipeGap;
+            if (height < 0) {
+                height = 0;
+            }
             let { gameFieldWidth, gameFieldHeight } = state;
             state.arrayOfPipes.push({
                 pipeHeightTop: height,
-                pipeHeightBottom: gameFieldHeight - height,
+                pipeHeightBottom: gameFieldHeight - state.pipeGap - height,
                 pipeWidth: state.pipeWidth,
                 pipePosX: gameFieldWidth,
             });
